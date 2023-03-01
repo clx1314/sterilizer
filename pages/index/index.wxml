@@ -16,4 +16,5 @@
     </view>
     
   </view>
+  <view class="device addNew"><van-icon name="add-o" />添加设备</view>
 </view>

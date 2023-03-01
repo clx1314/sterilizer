@@ -41,3 +41,12 @@
     align-items: center;
     width: 110rpx;
 }
+.addNew{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #409EFF;
+    border: 1px dashed #666;
+    box-shadow: none;
+    background: #ebebeb;
+}
