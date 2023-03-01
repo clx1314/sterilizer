@@ -13,10 +13,8 @@ Page({
     maxTemp: 200,
     modes: [
       {name: '智能自动', icon: 'zidongguanli'},
-      {name: '负离子', icon: 'caozuo_fulizi'},
-      {name: '强杀菌', icon: 'shajun'},
-      {name: '除湿', icon: 'hekriconchushi'},
-      {name: '防霉', icon: 'anquan'},
+      {name: '紫外线', icon: 'ziwaixian'},
+      {name: '臭氧', icon: 'chouyang'},
     ],
     current: 0,
   },

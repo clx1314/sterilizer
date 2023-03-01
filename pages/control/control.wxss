@@ -76,7 +76,7 @@
     justify-content: space-around;
 }
 .mode{
-    width: 96rpx;
+    width: 168rpx;
     height: 116rpx;
     padding: 16rpx;
     background: #e6e6e6;

@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // shichang | wendu | line-132 | hekriconchushi | caozuo_fulizi | suoding | shajun | anquan | zidongguanli | jiesuo | qidong | renlianshibie
+    // ziwaixian | chouyang | shichang | wendu | line-132 | hekriconchushi | caozuo_fulizi | suoding | shajun | anquan | zidongguanli | jiesuo | qidong | renlianshibie
     name: {
       type: String,
     },
