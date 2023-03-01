@@ -1,0 +1,19 @@
+<view class="devices">
+  <view wx:for="{{deviceList}}" wx:key="index" class="device">
+    <image class="left_img" src="http://hms-web.oss-cn-shenzhen.aliyuncs.com/image/wx/sterilizer.jpg" />
+    <view class="right">
+      <view class="flex-seat">
+        {{item.name}}
+        <van-tag round color="{{item.status==='在线'?'#409EFF':'#999'}}">{{item.status}}</van-tag>
+      </view>
+      <view class="flex-seat">
+        <view class="flex-seat iconStatus">
+          <iconfont size="22" name="{{item.openFace?'line-132':'renlianshibie'}}" class="icon"/>
+          <iconfont size="22" name="{{item.isLock?'jiesuo':'suoding'}}" class="icon"/>
+        </view>
+        <view class="startBtn"><iconfont size="22" name="qidong" class="icon"/></view>
+      </view>
+    </view>
+    
+  </view>
+</view>

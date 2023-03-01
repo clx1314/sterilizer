@@ -1,0 +1,57 @@
+<!--pages/control/control.wxml-->
+<view class="flex-seat topTitle">
+    <view>智能消毒柜 <van-tag round type="primary">使用中</van-tag></view>
+    <view bindtap="toHistory">历史记录<van-icon name="arrow" /></view>
+</view>
+<view class="flex-seat top">
+    <view class="top_left">
+        <view class="flex-seat icons">
+            <view class="flex-btn" bindtap="handleFace">
+                <iconfont size="58" name="{{openFace?'line-132':'renlianshibie'}}" class="icon"/>
+                <text style="margin-top:4rpx;">人脸识别</text>
+                <text class="miniStatus">{{openFace?'已开启':'已关闭'}}</text>
+            </view>
+            <view class="flex-btn">
+                <view class="startBtn"><iconfont size="40" name="qidong" class="icon"/></view>
+                <text style="margin-top:4rpx;">开始消毒</text>
+            </view>
+        </view>
+        <view class="status">
+            <view class="flex-btn"><text>已连接</text>网络</view>
+            <view class="flex-btn"><text>已连接</text>蓝牙</view>
+            <view class="flex-btn"><text>已关闭</text>柜门</view>
+        </view>
+    </view>
+    <view  class="sterilizer">
+        <image class="sterilizer_img" src="http://hms-web.oss-cn-shenzhen.aliyuncs.com/image/wx/sterilizer.jpg" />
+        <view class="aroundImg"></view>
+        <view class="activeIcons flex-btn" bindtap="handleLock">
+            <iconfont size="52" name="{{isLock?'jiesuo':'suoding'}}" class="icon"/>
+            <text style="margin-top:10rpx;">{{isLock?'已解锁':'已锁定'}}</text>
+        </view>
+    </view>
+</view>
+<view class="bottom">
+    <view class="title">启动模式</view>
+    <view class="modes">
+        <view class="mode flex-btn {{current===index?'selectBtn':''}}" wx:for="{{modes}}" wx:key="index" bindtap="startMode" data-index="{{index}}">
+            <iconfont size="36" name="{{item.icon}}" class="icon" color="{{current===index?'#E6E6E6':''}}"/>{{item.name}}
+        </view>
+    </view>
+</view>
+
+
+<view class="bottom">
+    <view class="title">时间调节 {{time}} min</view>
+    <view class="slide">
+        <view style="width:640rpx;"><van-slider value="{{time}}" min="30" max="{{maxTime}}" step="10" bar-height="6px" bind:change="onChangeTime" /></view>
+        <view>{{maxTime}}</view>
+    </view>
+    <view class="title">温度调节 {{temp}} ℃</view>
+    <view class="slide">
+        <view style="width:640rpx;"><van-slider value="{{temp}}" min="30" max="{{maxTemp}}" step="10" bar-height="6px" bind:change="onChangeTemp" /></view>
+        <view>{{maxTemp}}</view>
+    </view>
+    <!-- <van-slider value="{{temp}}" min="50" max="200" bind:change="onChangeTemp" />  -->
+</view>
+

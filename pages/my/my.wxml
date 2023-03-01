@@ -1,0 +1,41 @@
+<view style="margin:30px 0">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+<van-cell-group inset>
+  <van-cell title="" size="large" is-link value="" >
+    <view slot="title">
+        <view><van-icon name="description" /> 操作记录</view>
+    </view>
+  </van-cell>
+  <van-cell size="large" is-link value="" border="{{ false }}" >
+    <view slot="title">
+        <view><van-icon name="phone-o" /> 联系客服</view>
+    </view>
+  </van-cell>
+  <van-cell size="large" is-link value="" border="{{ false }}" >
+    <view slot="title">
+        <view><van-icon name="service-o" /> 意见反馈</view>
+    </view>
+  </van-cell>
+  <van-cell size="large" is-link value="" border="{{ false }}" >
+    <view slot="title">
+        <view><van-icon name="setting-o" /> 设置</view>
+    </view>
+  </van-cell>
+</van-cell-group>

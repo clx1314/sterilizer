@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-slider": "@vant/weapp/slider/index"
+  },
+  "navigationBarTitleText": "操控界面"
+}
