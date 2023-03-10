@@ -11,12 +11,12 @@
         </view>
         <view class="flex_seat">
             <view class="flex_seat">
-                <iconfont size="38" name="{{(item.type==='智能自动'?'zidongguanli':'jiesuo')}}" class="icon"/>
+                <iconfont size="38" name="{{(item.type==='智能自动'?'zidongguanli':(item.type==='紫外线'?'ziwaixian':(item.type==='臭氧'?'chouyang':'jiesuo')))}}" class="icon"/>
                 <text style="margin-left:10rpx;">{{active===0 ? item.type : '解锁'}}</text>
             </view>
             <view class="flex_seat time_temp" wx:if="{{active===0}}">
-                <view class="flex_seat"><iconfont size="18" name="shichang" class="icon"/>120min</view>
-                <view class="flex_seat"><iconfont size="18" name="wendu" class="icon"/>200℃</view>
+                <view class="flex_seat"><iconfont size="18" name="shichang" class="icon"/>{{item.time}}min</view>
+                <view class="flex_seat"><iconfont size="18" name="wendu" class="icon"/>{{item.temp}}℃</view>
             </view>
         </view>
     </view>

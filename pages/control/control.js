@@ -14,8 +14,8 @@ Page({
     isLock: false,
     openFace: false,
     temp: 200,
-    time: 120,
-    maxTime: 180,
+    time: 60,
+    maxTime: 120,
     maxTemp: 300,
     modes: [
       {name: '智能自动', icon: 'zidongguanli'},
@@ -23,6 +23,7 @@ Page({
       {name: '臭氧', icon: 'chouyang'},
     ],
     current: 0,
+    type: ''
   },
   startDisinfect(){
     this.setData({ 
@@ -42,18 +43,23 @@ Page({
       this.setData({ isClick: false })
     }, 4000)
     const dataNow = new Date()
+    const current = this.data.current
+    if(current===0){ this.setData({ type: '智能自动' }) }
+    if(current===1){ this.setData({ type: '紫外线' }) }
+    if(current===2){ this.setData({ type: '臭氧' }) }
     recordCol.add({
       // 添加的数据需要写在方法的data选项中
       data: {
         name: "李梅",
-        type: '智能自动',
-        createAt: dataNow
+        type: this.data.type,
+        createAt: dataNow,
+        time: this.data.time,
+        temp: this.data.temp
       }
     })
   },
   handleLock(e) {
     this.setData({ isLock: !this.data.isLock })
-    console.log();
     if(this.data.isLock){
       const dataNow = new Date()
       recordCol.add({
@@ -84,6 +90,7 @@ Page({
     this.setData({ temp: event.detail })
   },
   startMode(e) {
+    console.log(e.currentTarget.dataset.index);
     this.setData({ current: e.currentTarget.dataset.index })
   },
   toHistory() {
