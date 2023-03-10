@@ -4,14 +4,14 @@
   <van-tab title="解锁记录"></van-tab>
 </van-tabs>
 <view class="records">
-    <view wx:for="{{active===0 ? record : unLockList}}" wx:key="index" class="record">
+    <view wx:for="{{active===0 ? disinfect : deblocking}}" wx:key="index" class="record">
         <view class="flex_seat">
             操作人：{{item.name}}
-            <text class="time">{{item.time}}</text>
+            <text class="time">{{item.createAt}}</text>
         </view>
         <view class="flex_seat">
             <view class="flex_seat">
-                <iconfont size="38" name="{{item.type==='强杀菌'?'shajun':(item.type==='负离子'?'caozuo_fulizi':'jiesuo')}}" class="icon"/>
+                <iconfont size="38" name="{{(item.type==='智能自动'?'zidongguanli':'jiesuo')}}" class="icon"/>
                 <text style="margin-left:10rpx;">{{active===0 ? item.type : '解锁'}}</text>
             </view>
             <view class="flex_seat time_temp" wx:if="{{active===0}}">

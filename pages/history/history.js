@@ -1,4 +1,5 @@
 // pages/history/history.js
+import moment from '../../utils/moment'
 Page({
 
   /**
@@ -6,13 +7,8 @@ Page({
    */
   data: {
     active: 0,
-    record: [
-      {name: '张三', time: '2023-02-28 09:02', type: '负离子'},
-      {name: '张三', time: '2023-02-27 15:02', type: '强杀菌'},
-    ],
-    unLockList: [
-      {name: '张三', time: '2023-02-26 11:37'},
-    ]
+    disinfect: [],
+    deblocking: []
   },
   onChange(event) {
     this.setData({ active: event.detail.index })
@@ -21,7 +17,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var that = this
+    wx.cloud.callFunction({
+      name: 'quickstartFunctions',
+      data: {
+        type: 'selectRecord',
+        table: 'record'
+      },
+      complete: res => {
+        console.log('recordrecord: ', res)
+        const record = res.result.data.map(item => {
+          return {...item, createAt: moment(item.createAt).format('YYYY-MM-DD HH:mm') }
+        })
+        that.setData({
+          disinfect: record.filter(item=>{
+            if(item.type!=='解锁'){
+              return item
+            }
+          }),
+          deblocking: record.filter(item=>{
+            if(item.type==='解锁'){
+              return item
+            }
+          })
+        })
+      }
+    })
   },
 
   /**

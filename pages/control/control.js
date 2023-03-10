@@ -1,16 +1,22 @@
 // pages/control/control.js
+// 1.获取到当前环境的数据库对象
+const db = wx.cloud.database()
+// 2.获取到要操作的集合
+const recordCol = db.collection("record")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    status: '在线',
+    isClick: false,
     isLock: false,
     openFace: false,
-    temp: 100,
-    time: 50,
-    maxTime: 90,
-    maxTemp: 200,
+    temp: 200,
+    time: 120,
+    maxTime: 180,
+    maxTemp: 300,
     modes: [
       {name: '智能自动', icon: 'zidongguanli'},
       {name: '紫外线', icon: 'ziwaixian'},
@@ -18,8 +24,47 @@ Page({
     ],
     current: 0,
   },
-  handleLock() {
+  startDisinfect(){
+    this.setData({ 
+      isClick: true,
+      status: '使用中'
+    })
+    wx.showLoading({
+      title: '开始消毒',
+    })
+    setTimeout(function () {
+      wx.showLoading({
+        title: '正在消毒中...',
+      })
+    }, 2000)
+    setTimeout(()=> {
+      wx.hideLoading()
+      this.setData({ isClick: false })
+    }, 4000)
+    const dataNow = new Date()
+    recordCol.add({
+      // 添加的数据需要写在方法的data选项中
+      data: {
+        name: "李梅",
+        type: '智能自动',
+        createAt: dataNow
+      }
+    })
+  },
+  handleLock(e) {
     this.setData({ isLock: !this.data.isLock })
+    console.log();
+    if(this.data.isLock){
+      const dataNow = new Date()
+      recordCol.add({
+        // 添加的数据需要写在方法的data选项中
+        data: {
+          name: "李梅",
+          type: '解锁',
+          createAt: dataNow
+        }
+      })
+    }
   },
   handleFace() {
     this.setData({ openFace: !this.data.openFace })
@@ -50,7 +95,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    console.log('options', options);
   },
 
   /**

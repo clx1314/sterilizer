@@ -1,6 +1,6 @@
 <!--pages/control/control.wxml-->
 <view class="flex-seat topTitle">
-    <view>智能消毒柜 <van-tag round type="primary">使用中</van-tag></view>
+    <view>1号消毒柜 <van-tag round type="primary">{{status}}</van-tag></view>
     <view bindtap="toHistory">历史记录<van-icon name="arrow" /></view>
 </view>
 <view class="flex-seat top">
@@ -11,8 +11,8 @@
                 <text style="margin-top:4rpx;">人脸识别</text>
                 <text class="miniStatus">{{openFace?'已开启':'已关闭'}}</text>
             </view>
-            <view class="flex-btn">
-                <view class="startBtn"><iconfont size="40" name="qidong" class="icon"/></view>
+            <view class="flex-btn" bindtap="startDisinfect">
+                <view class="startBtn {{isClick?'clickStart':''}}"><iconfont size="40" name="qidong" class="icon"/></view>
                 <text style="margin-top:4rpx;">开始消毒</text>
             </view>
         </view>

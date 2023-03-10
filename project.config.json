@@ -46,11 +46,13 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
-  "appid": "wx5ff8d4c7277e3859",
+  "appid": "wx243802f02b172b27",
   "projectname": "miniprogram-92",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "cloudfunctionRoot": "cloud/",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }
