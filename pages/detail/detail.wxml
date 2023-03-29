@@ -1,0 +1,21 @@
+<!--pages/detail/detail.wxml-->
+<view wx:if="{{ active ==0 }}">
+    <van-cell-group inset title="消毒基础信息">
+        <van-cell title="操作人" value="李梅" />
+        <van-cell title="操作时间" value="2023-03-10 11:21"/>
+        <van-cell title="消毒类型" value="智能自动"/>
+        <van-cell title="设置时长" value="70分钟"/>
+        <van-cell title="设置温度" value="240℃"/>
+        <van-cell title="异常情况" value="无"/>
+        <van-cell title="消毒状态" value="已完成"/>
+    </van-cell-group>
+</view>
+<view wx:else>
+    <van-cell-group inset title="解锁信息">
+        <van-cell title="操作人" value="李梅" />
+        <van-cell title="操作时间" value="2023-03-10 11:21"/>
+        <van-cell title="操作类型" value="遥控解锁"/>
+        <van-cell title="解锁状态" value="解锁成功"/>
+    </van-cell-group>
+</view>
+

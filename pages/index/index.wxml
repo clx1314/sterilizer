@@ -17,5 +17,16 @@
     
   </view>
   <view class="device addNew" bindtap='clickaddNew'><van-icon name="add-o" />添加设备</view>
-  <van-dialog id="van-dialog" />
+  
+  <!-- <van-dialog id="van-dialog" /> -->
 </view>
+<van-dialog id="van-dialog">
+    <van-field
+    type="nickname"
+    clearable
+    bind:input="onchangeName"
+    value="{{ deviceName }}"
+    placeholder="请输入新的设备名"
+    custom-style="width: 88%; margin: 40rpx; background:#efefef; border-radius:10rpx;"
+  />
+</van-dialog>

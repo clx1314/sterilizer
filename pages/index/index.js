@@ -13,6 +13,8 @@ Page({
     isClick: false,
     deviceList: [{name: '2号消毒柜', status: '在线', openFace: true, isLock: true}],
     isLock: false,
+    show: false,
+    deviceName: '智能消毒柜',
   },
   startDisinfect(){
     this.setData({ deviceList: [{name: '2号消毒柜', status: '使用中', openFace: true, isLock: true}]})
@@ -48,24 +50,44 @@ Page({
       url: '/pages/control/control'
     })
   },
+  onchangeName(){
+    this.setData({ deviceName: e.detail })
+  },
    // 扫码
    async clickaddNew () {
+    this.setData({ show: true })
     let that = this;
     wx.scanCode({
       success(result) {
-        console.log('扫码结果', result)
+        console.log('1111');
+        that.showDialog()
+        that.getDevice()
+      }
+    })
+  },
+  showDialog(){
+    Dialog.confirm({
+      title: '添加新设备',
+      message: '设备名：智能消毒柜',
+    })
+      .then(() => {
+        this.setData({ deviceName: this.data.deviceName })
         deviceCloud.add({
           // 添加的数据需要写在方法的data选项中
           data: {
-            name: "智能消毒柜",
+            name: this.data.deviceName,
             isLock: false,
             openFace: false,
             status: '离线',
           }
         }) 
-        this.getDevice()
-      }
-    })
+      })
+      .catch(() => {
+        // on cancel
+      });
+  },
+  onClose() {
+    this.setData({ show: false });
   },
   /**
    * 生命周期函数--监听页面加载

@@ -4,7 +4,7 @@
   <van-tab title="解锁记录"></van-tab>
 </van-tabs>
 <view class="records">
-    <view wx:for="{{active===0 ? disinfect : deblocking}}" wx:key="index" class="record">
+    <view wx:for="{{active===0 ? disinfect : deblocking}}" wx:key="index" class="record" bindtap="getDetail" data-active="{{active}}">
         <view class="flex_seat">
             操作人：{{item.name}}
             <text class="time">{{item.createAt}}</text>

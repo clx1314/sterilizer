@@ -13,6 +13,12 @@ Page({
   onChange(event) {
     this.setData({ active: event.detail.index })
   },
+  getDetail(e){
+    const active = e.currentTarget.dataset.active
+    wx.navigateTo({
+      url: `/pages/detail/detail?active=${active}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
